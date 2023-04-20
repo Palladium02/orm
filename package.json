@@ -1,0 +1,20 @@
+{
+  "name": "orm",
+  "version": "0.0.0",
+  "description": "A simple ORM for typescript",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "tsc -p tsconfig.build.json"
+  },
+  "keywords": [
+    "db",
+    "orm"
+  ],
+  "author": "Sean Meyer",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/node": "^18.15.12",
+    "typescript": "^5.0.4"
+  }
+}
