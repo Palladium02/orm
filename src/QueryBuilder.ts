@@ -1,5 +1,11 @@
 import type { Where, Operations } from "./typings";
 
+const OPERATOR_MAP = {
+  $gt: ">",
+  $lt: "<",
+  $eq: "=",
+};
+
 export class QueryBuilder {
   where<T extends object>(where: Where<T>) {
     if (Array.isArray(where)) {
@@ -21,6 +27,6 @@ export class QueryBuilder {
   }
 
   static translate(operator: string): string {
-    return "";
+    return OPERATOR_MAP[operator as keyof typeof OPERATOR_MAP];
   }
 }
