@@ -35,6 +35,17 @@ class Source {
     return this.adapter.query<T>(query);
   }
 
+  // TODO: types are messed up => need changing
+  public async $transaction<T>(...queries: Promise<T>[]): Promise<T[]> {
+    await this.$raw("COMMIT;");
+    try {
+      return await Promise.all(queries);
+    } catch (_) {
+      await this.$raw("ROLLBACK;");
+      return [];
+    }
+  }
+
   public getRepository<T>(entity: Class<T>): T {
     return new (this.entities.get(entity) as any)();
   }
